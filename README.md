@@ -1,1 +1,4 @@
-https://stackoverflow.com/questions/50528180/list-drives-and-network-locations-in-python-windows
+- https://stackoverflow.com/questions/50528180/list-drives-and-network-locations-in-python-windows
+- https://stackoverflow.com/questions/54458308/how-to-get-disk-space-total-used-and-free-using-python-2-7-without-psutil
+- https://blog.magrathealabs.com/filesystem-events-monitoring-with-python-9f5329b651c3
+- http://timgolden.me.uk/python/win32_how_do_i/watch_directory_for_changes.html
