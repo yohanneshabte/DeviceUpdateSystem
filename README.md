@@ -2,3 +2,16 @@
 - https://stackoverflow.com/questions/54458308/how-to-get-disk-space-total-used-and-free-using-python-2-7-without-psutil
 - https://blog.magrathealabs.com/filesystem-events-monitoring-with-python-9f5329b651c3
 - http://timgolden.me.uk/python/win32_how_do_i/watch_directory_for_changes.html
+- https://stackoverflow.com/questions/40499753/windows-volume-get-size-free-space
+- https://stackoverflow.com/questions/827371/is-there-a-way-to-list-all-the-available-drive-letters-in-python
+- https://stackoverflow.com/questions/44970700/python-2-get-network-share-path-from-drive-letter
+- https://stackoverflow.com/questions/182197/how-do-i-watch-a-file-for-changes
+- https://stackoverflow.com/questions/800197/how-to-get-all-of-the-immediate-subdirectories-in-python
+- https://stackoverflow.com/questions/10960477/how-to-read-file-attributes-in-directory
+- https://stackoverflow.com/questions/51299026/how-can-i-get-information-on-a-files-propertiesdetails-using-python
+- https://stackoverflow.com/questions/237079/how-to-get-file-creation-modification-date-times-in-python
+- https://stackoverflow.com/questions/973473/getting-a-list-of-all-subdirectories-in-the-current-directory/38245063
+- https://stackoverflow.com/questions/1392413/calculating-a-directorys-size-using-python
+- https://stackoverflow.com/questions/2485719/very-quickly-getting-total-size-of-folder
+- https://kite.com/python/answers/how-to-list-immediate-subdirectories-in-python
+- http://www.ironpython.info/index.php?title=WMI_with_IronPython
