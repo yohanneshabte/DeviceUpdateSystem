@@ -1,3 +1,4 @@
+### Drive System with Python
 - https://stackoverflow.com/questions/50528180/list-drives-and-network-locations-in-python-windows
 - https://stackoverflow.com/questions/54458308/how-to-get-disk-space-total-used-and-free-using-python-2-7-without-psutil
 - https://blog.magrathealabs.com/filesystem-events-monitoring-with-python-9f5329b651c3
@@ -23,3 +24,18 @@
 - https://stackoverflow.com/questions/41375247/how-to-run-python-script-in-windows-backround
 - http://thepythoncorner.com/dev/how-to-create-a-windows-service-in-python/
 - https://stackoverflow.com/questions/18599339/python-watchdog-monitoring-file-for-changes
+
+### MySQL & Python
+ #### Setup MySQL and PhpMyAdmin
+- https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html
+- https://www.bogotobogo.com/php/phpMyAdmin_Install_On_Windows.php
+- https://stackoverflow.com/questions/49008576/can-i-host-my-own-mysql-database
+ #### Connecting MySQL and Python
+- https://stackoverflow.com/questions/372885/how-do-i-connect-to-a-mysql-database-in-python
+- https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
+ #### Stored Procedure using Python
+- https://pynative.com/python-mysql-execute-stored-procedure/
+ #### Creating SP and triggers in MYSQL(with PHPMyAdmin)
+- https://medium.com/mobiosolutions/create-stored-procedures-in-php-myadmin-ccf02c323a7e 
+- https://dev.mysql.com/doc/refman/8.0/en/triggers.html
+- https://stackoverflow.com/questions/17869629/how-to-create-a-mysql-trigger-in-phpmyadmin
