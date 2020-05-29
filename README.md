@@ -22,3 +22,4 @@
 - https://stackoverflow.com/questions/32404/how-do-you-run-a-python-script-as-a-service-in-windows
 - https://stackoverflow.com/questions/41375247/how-to-run-python-script-in-windows-backround
 - http://thepythoncorner.com/dev/how-to-create-a-windows-service-in-python/
+- https://stackoverflow.com/questions/18599339/python-watchdog-monitoring-file-for-changes
