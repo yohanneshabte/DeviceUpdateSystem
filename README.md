@@ -1,3 +1,15 @@
+#### To get Folder size without access to escalated permission try this
+##### check and benchmark the speed vs the existing algo
+``` python
+import win32com.client as com
+
+folderPath = r"D:\Software\Downloads"
+fso = com.Dispatch("Scripting.FileSystemObject")
+folder = fso.GetFolder(folderPath)
+MB = 1024 * 1024.0
+print("%.2f MB" % (folder.Size / MB))
+```
+
 ### Drive System with Python
 - https://stackoverflow.com/questions/50528180/list-drives-and-network-locations-in-python-windows
 - https://stackoverflow.com/questions/54458308/how-to-get-disk-space-total-used-and-free-using-python-2-7-without-psutil
