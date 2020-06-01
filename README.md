@@ -28,6 +28,7 @@ print("%.2f MB" % (folder.Size / MB))
 - https://stackoverflow.com/questions/2485719/very-quickly-getting-total-size-of-folder
 - https://kite.com/python/answers/how-to-list-immediate-subdirectories-in-python
 - http://www.ironpython.info/index.php?title=WMI_with_IronPython
+#### threading/background services
 - https://medium.com/@bfortuner/python-multithreading-vs-multiprocessing-73072ce5600b
 - https://stackoverflow.com/questions/23100704/running-infinite-loops-using-threads-in-python
 - https://stackoverflow.com/questions/47966717/python-running-main-thread-continuously-and-while-running-others-in-background
