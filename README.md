@@ -35,7 +35,9 @@ print("%.2f MB" % (folder.Size / MB))
 - https://stackoverflow.com/questions/32404/how-do-you-run-a-python-script-as-a-service-in-windows
 - https://stackoverflow.com/questions/41375247/how-to-run-python-script-in-windows-backround
 - http://thepythoncorner.com/dev/how-to-create-a-windows-service-in-python/
+#### Watchdog
 - https://stackoverflow.com/questions/18599339/python-watchdog-monitoring-file-for-changes
+- https://stackoverflow.com/questions/32092645/python-watchdog-windows-wait-till-copy-finishes
 
 ### MySQL & Python
  #### Setup MySQL and PhpMyAdmin
