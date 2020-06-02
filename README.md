@@ -36,6 +36,14 @@ print("%.2f MB" % (folder.Size / MB))
 - https://stackoverflow.com/questions/32404/how-do-you-run-a-python-script-as-a-service-in-windows
 - https://stackoverflow.com/questions/41375247/how-to-run-python-script-in-windows-backround
 - http://thepythoncorner.com/dev/how-to-create-a-windows-service-in-python/
+##### multithreading
+- https://www.codeproject.com/Questions/1232205/How-to-run-two-for-loops-at-the-same-time-in-a-fun
+- https://stackoverflow.com/questions/36847817/can-two-infinite-loops-be-ran-at-once/
+- https://www.pythonforthelab.com/blog/handling-and-sharing-data-between-threads/
+##### multiprocessing
+- https://stackoverflow.com/questions/3474382/how-do-i-run-two-python-loops-concurrently
+- https://realpython.com/python-concurrency/
+
 #### Watchdog
 - https://stackoverflow.com/questions/18599339/python-watchdog-monitoring-file-for-changes
 - https://stackoverflow.com/questions/32092645/python-watchdog-windows-wait-till-copy-finishes
