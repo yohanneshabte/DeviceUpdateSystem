@@ -43,7 +43,9 @@ print("%.2f MB" % (folder.Size / MB))
 ##### multiprocessing
 - https://stackoverflow.com/questions/3474382/how-do-i-run-two-python-loops-concurrently
 - https://realpython.com/python-concurrency/
-
+##### Async
+- https://www.aeracode.org/2018/02/19/python-async-simplified/
+- https://stackoverflow.com/questions/1239035/asynchronous-method-call-in-python
 #### Watchdog
 - https://stackoverflow.com/questions/18599339/python-watchdog-monitoring-file-for-changes
 - https://stackoverflow.com/questions/32092645/python-watchdog-windows-wait-till-copy-finishes
