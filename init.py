@@ -20,13 +20,17 @@ import win32com.client as com
 
 
 class Project:
-    name = ""
-    dev = ""
-    date = ""
-    def __init__(self, name, dev, date):
+    def __init__(self, name, dev, date, size):
         self.name = name
         self.dev = dev
         self.date = date
+        self.size = size
+    def __eq__(self, other):
+        if not isinstance(other, Project):
+            return NotImplemented
+        return self.name == other.name   
+    def __str__(self):
+        return "Name: "+self.name + " => Device: " + self.dev + ", Date: " + self.date + ", Size: " + self.size       
 
 class Drive:
     letter = ""
@@ -42,15 +46,20 @@ class Drive:
         self.isNetwork = isNetwork
     def __str__(self):
         return self.letter + " => " + self.name + ", " + str(self.totalSize) + ", " + str(self.freeSpace) + ", " + str(self.isNetwork)
+    def __eq__(self, other):
+        if not isinstance(other, Drive):
+            return NotImplemented
+        return self.name == other.name and self.totalSize == other.totalSize    
 
-
-resume = 0
-while 1:
-    (_drives, total, resume) = win32net.NetUseEnum(None, 0, resume)
-    for drive in _drives:
-        if drive['local']:
-            print(drive['local'], "=>", drive['remote'])
-    if not resume: break
+def getNetworkDrives():
+    #get network drives that may not be mapped
+    resume = 0
+    while 1:
+        (_drives, total, resume) = win32net.NetUseEnum(None, 0, resume)
+        for drive in _drives:
+            if drive['local']:
+                print(drive['local'], "=>", drive['remote'])
+        if not resume: break
 
 def doesDriveExist(letter):
     result = False
@@ -71,6 +80,12 @@ def listAllDrives():
         drives.remove('')
     return drives
 
+def checkIsProject(name):
+    #if folder(directory) satisfies project spec check continue to access dir
+    #check file name/ match against rules
+    if name.startswith('.'):
+        return False
+    return True
 
 def selectDrive(letter):
     name = win32api.GetVolumeInformation(letter)
@@ -83,27 +98,33 @@ def getProjects(letter):
     start = time.time()
     dirs = os.scandir(letter)
     folders = []
+    projects = []
     for folder in dirs:
-        if folder.is_dir() and not(folder.name.startswith('.')):
+        if folder.is_dir() and not(folder.name.startswith('.')) and checkIsProject(folder.name):
             path_dir = Path(folder.path)
             size = "{:.2f}".format((sum(f.stat().st_size for f in path_dir.glob('**/*') if f.is_file())) / (2**20)) + " MB"
             mTime = time.ctime(os.path.getmtime(folder.path))
             folders.append([folder.name, mTime, size])
+            #create object
+            project = Project(folder.name, letter, mTime, size)
+            print(project)
+            projects.append(project)
     end = time.time()
     print("Execution time: ", end - start, " secs")
     return folders
 drives = listAllDrives()
 
 print(drives)
-for drive in drives:  
-    if doesDriveExist(drive):
-        projects = getProjects(drive+'\\') 
-        print(selectDrive(drive+'\\'))
-        print(projects)
+
+            
+while True:
+    letter = str(input("Drive to Scan(Type Quit to quit): "))
+    letter = letter.upper()
+    if letter == "QUIT":
+        break
+    if doesDriveExist(letter+':'):  
+        print(selectDrive(letter+':\\'))
+        projects = getProjects(letter+':\\') 
     else:
-        print(drive, " => is not mounted")
-    print("=======================================================")
-    print()    
-      
-
-
+        print(letter, " => is not mounted")
+    print("=======================================================\n")    
