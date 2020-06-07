@@ -76,11 +76,21 @@ class DeviceMonitor(win32serviceutil.ServiceFramework):
 
     # monitor all existing network drives for changes and log accordingly
     # runs during life of service
+    '''
+    Monitored data
+        - changes to drive(created, deleted, renamed events) - update projects table
+        - size changes to drive - update drives table
+    '''
     def monitorNearStorage():
         pass
 
     # monitor given cold storage or archive drives for changes and log accordingly
     # starts running when drive is inserted and stops when drive is removed
+    '''
+    Monitored data
+        - changes to drive(created, deleted, renamed events) - update projects table
+        - size changes to drive - update drive table
+    '''
     def monitorExternalStorage(letter):
         pass    
     
