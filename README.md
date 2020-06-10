@@ -71,3 +71,9 @@ print("%.2f MB" % (folder.Size / MB))
 ### Python Executables
 - https://stackoverflow.com/questions/5458048/how-to-make-a-python-script-standalone-executable-to-run-without-any-dependency
 - https://pyinstaller.readthedocs.io/en/stable/
+
+### Testing/ QA
+- https://docs.pytest.org/en/stable/getting-started.html
+- https://medium.com/swlh/automate-python-testing-with-github-actions-7926b5d8a865
+- https://flake8.pycqa.org/en/latest/
+- https://www.lambdatest.com/blog/top-5-python-frameworks-for-test-automation-in-2019/
