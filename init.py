@@ -43,7 +43,7 @@ class Project:
     def addToDB(self, db):
         # 1. check if project already exists (Not implemented)
         # 2. add to DB if it doesn't 
-        sql = f"INSERT INTO project VALUES ('{self.projectID}', '{self.date}', '{self.size}', '{self.name}', {self.priorityID}, {self.statusID}, {self.typeID}, '{self.projectLocation}')"
+        sql = f"INSERT INTO project VALUES ('{self.projectLocation}_{self.projectID}', '{self.date}', '{self.size}', '{self.name}', {self.priorityID}, {self.statusID}, {self.typeID}, '{self.projectLocation}')"
         try:
             print('Adding to DB: ', sql)
             db.execute(sql)
@@ -99,7 +99,7 @@ class Drive:
         sql = f"INSERT INTO drive VALUES ('{self.driveID}', '{self.totalSize}', '{self.driveSpinDate}', '{self.driveLocation}', '{self.driveMake}', {self.driveAge}, {self.driveTypeID})"
         print('committing: ', sql)
         db.execute(sql)
-        if 'Y' == str(input('Are you sure you want to add the drive to the DB?(Y/N)')):
+        if 'Y' == str(input('Are you sure you want to add the drive to the DB?(Y/N): ')):
             db.commit()
             print('Drive successfully added to DB')  
 
@@ -142,7 +142,8 @@ def selectDrive(letter, db):
     if name[0].strip() == '':
         deviceID = 'Default'
     else:
-        deviceID = name[0]    
+        deviceID = name[0] 
+    deviceID = str(input("What is Device Name: "))
     drive = Drive(deviceID, letter, util.convertSize(totalSize), util.convertSize(free), driveMake)
     print('This is your drive: ', drive) 
     print('------------------------')
