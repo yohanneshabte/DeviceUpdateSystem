@@ -67,3 +67,7 @@ print("%.2f MB" % (folder.Size / MB))
 - https://medium.com/mobiosolutions/create-stored-procedures-in-php-myadmin-ccf02c323a7e 
 - https://dev.mysql.com/doc/refman/8.0/en/triggers.html
 - https://stackoverflow.com/questions/17869629/how-to-create-a-mysql-trigger-in-phpmyadmin
+
+### Python Executables
+- https://stackoverflow.com/questions/5458048/how-to-make-a-python-script-standalone-executable-to-run-without-any-dependency
+- https://pyinstaller.readthedocs.io/en/stable/
