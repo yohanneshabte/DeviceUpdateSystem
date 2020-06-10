@@ -9,7 +9,8 @@ folder = fso.GetFolder(folderPath)
 MB = 1024 * 1024.0
 print("%.2f MB" % (folder.Size / MB))
 ```
-
+### Questions/Bugs
+1. If project ID exists in two different drives(could be a backup), It can't be added to the DB more than once because the project ID is a primary key for projects table. What would be a better data model to solve this issue?
 ### Drive System with Python
 - https://stackoverflow.com/questions/50528180/list-drives-and-network-locations-in-python-windows
 - https://stackoverflow.com/questions/54458308/how-to-get-disk-space-total-used-and-free-using-python-2-7-without-psutil

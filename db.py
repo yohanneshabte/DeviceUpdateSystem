@@ -7,12 +7,13 @@ class DB:
     user = 'user'
     password = 'user'
     host = 'localhost'
-    db = 'DUS'
+    db = 'dit'
+    port = 3307
 
     def __init__(self):
         try:
             self.cnx = mysql.connector.connect(user=self.user, password=self.password, 
-                                               host=self.host, db=self.db)
+                                               host=self.host, db=self.db, port=self.port)
             self.cursor = self.cnx.cursor()
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
@@ -36,3 +37,4 @@ class DB:
 
     def closeConn(self):
         self.cnx.close()   
+

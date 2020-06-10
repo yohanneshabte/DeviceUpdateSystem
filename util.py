@@ -1,4 +1,5 @@
 import math
+import time
 
 def convertSize(bits):
     if bits == 0:
@@ -10,3 +11,12 @@ def convertSize(bits):
     if i > len(sizeType) - 1:
         return "excessive size(greater than 1000 TB)"
     return str(s) + sizeType[i]
+
+def convertTime(input):
+    try:
+        inputTime = time.strptime(input, "%m/%d/%y")
+        result = time.strftime('%Y-%m-%d %H:%M:%S', inputTime)
+    except:
+        print('Wrong Date')
+        result = None
+    return result
