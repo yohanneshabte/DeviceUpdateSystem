@@ -4,11 +4,11 @@ import logging
 
 
 class DB:
-    user = 'user'
-    password = 'user'
+    user = 'root'
+    password = ''
     host = 'localhost'
     db = 'dit'
-    port = 3307
+    port = 3306
 
     def __init__(self):
         try:

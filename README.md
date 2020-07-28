@@ -9,6 +9,13 @@ folder = fso.GetFolder(folderPath)
 MB = 1024 * 1024.0
 print("%.2f MB" % (folder.Size / MB))
 ```
+### pip packages to install
+- colorama
+- pywin32/win32api
+- watchdog
+- mysql-connector
+- win10toast
+
 ### Questions/Bugs
 1. If project ID exists in two different drives(could be a backup), It can't be added to the DB more than once because the project ID is a primary key for projects table. What would be a better data model to solve this issue?
 2. Project names that start with different letters etc.. Make a generalized project name validator

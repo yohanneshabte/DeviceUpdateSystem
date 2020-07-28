@@ -6,12 +6,12 @@ import win32.lib.win32serviceutil as win32serviceutil
 import win32.win32api as win32api
 import time
 import logging
-from win10toast import ToastNotifier
-import mysql.connector
-from db import DB
+#from win10toast import ToastNotifier
+#import mysql.connector
+#from db import DB
 
-toaster = ToastNotifier()
-db = DB()
+#toaster = ToastNotifier()
+#db = DB()
 def listAllDrives():
     localDrives = win32api.GetLogicalDriveStrings()
     drives = localDrives.split('\\\x00')
@@ -67,12 +67,12 @@ class DeviceMonitor(win32serviceutil.ServiceFramework):
             if len(drives1) > len(drives):
                 s = set(drives)
                 new = [x for x in drives1 if x not in s]
-                self.driveInserted(new)
+                #self.driveInserted(new)
                 drives = drives1
             elif len(drives1) < len(drives):  
                 s = set(drives1)
                 new = [x for x in drives if x not in s]
-                self.driveRemoved(new)
+                #self.driveRemoved(new)
                 drives = drives1  
             time.sleep(3)
 
@@ -105,20 +105,24 @@ class DeviceMonitor(win32serviceutil.ServiceFramework):
     # called in loop to monitor if drive is still available and monitoring should continue
     def isDeviceAvailable(letter):
         pass
-
+    
+    # start monitoring drives
+    # thread = CustomThread(MyObserver(letters, delay))
     def driveInserted(self, letters):
         for letter in letters:
-            db.execute("INSERT INTO log VALUES(0, '"+str(letter)+" drive inserted', '" + time.strftime('%Y-%m-%d %H:%M:%S') + "');")
-            db.commit()
+            print("INSERT INTO log VALUES(0, '"+str(letter)+" drive inserted', '" + time.strftime('%Y-%m-%d %H:%M:%S') + "');")
+            #db.commit()
             monitorExternalStorage(letter)
         self.watchingDrives.append("a")
 
+    # stop monitoring drives
+    # thread.stop()
     def driveRemoved(self, letters):
         for letter in letters:
-            db.execute("INSERT INTO log VALUES(0, '"+str(letter)+" drive removed', '" + time.strftime('%Y-%m-%d %H:%M:%S') + "');")
-            db.commit()
+            print("INSERT INTO log VALUES(0, '"+str(letter)+" drive removed', '" + time.strftime('%Y-%m-%d %H:%M:%S') + "');")
+            #db.commit()
         self.watchingDrives.remove("a")
 
 
 if __name__ == '__main__':
-    DeviceDetector.parse_command_line()
+    DeviceMonitor.parse_command_line()

@@ -134,6 +134,7 @@ def listAllDrives():
     return drives
 
 def selectDrive(letter, db):
+    print(Back.RESET + Fore.LIGHTGREEN_EX)
     name = win32api.GetVolumeInformation(letter)
     totalSize, used, free = shutil.disk_usage(letter) 
     isNetwork = win32file.GetDriveType(letter) == win32file.DRIVE_REMOTE
@@ -144,9 +145,12 @@ def selectDrive(letter, db):
         deviceID = name[0] 
     deviceID = str(input("What is Device Name: "))
     drive = Drive(deviceID, letter, util.convertSize(totalSize), util.convertSize(free), driveMake)
-    print(Back.LIGHTMAGENTA_EX + 'This is your drive: ' + drive) 
+    print(Back.LIGHTMAGENTA_EX + 'This is your drive: ') 
+    print(drive)
     print('------------------------')
+    print(Back.RESET + Fore.LIGHTBLUE_EX)
     if 'N' == str(input('Do you want to continue adding to the DataBase?(Y/N): ')):
+        print(Fore.RESET)
         return drive
     db.execute('SELECT * FROM `drive type`')
     for type in db.cursor:
@@ -155,6 +159,7 @@ def selectDrive(letter, db):
     driveLocation = str(input('Drive Location: '))
     driveSpinDate = str(input('Drive Spin Date(mm/dd/yy): '))
     driveAge = int(input('Enter Drive Age: '))
+    print(Fore.RESET)
     drive.setDriveInfo(driveTypeID, driveLocation, driveSpinDate, driveAge)
     return drive
 
@@ -182,19 +187,22 @@ def getProjects(letter, drive, priorityID, statusID, typeID):
                 folders.append([folder.name, mTime, size])
             else:
                 folders.append([folder.name, mTime])   
-                print(Fore.RED + "Not Valid to Add: " + project)
+                print(Fore.RED + "Not Valid to Add: ")
+                print(project)
+                print(Fore.RESET)
             projects.append(project)
     end = time.time()
-    print(Back.YELLOW + "Execution time: " + (end - start) + " secs")
+    print(Back.YELLOW + Fore.LIGHTBLACK_EX  + "Execution time: " + str(end - start) + " secs")
+    print(Back.RESET + Fore.RESET)
     return folders
 
-def checkDriveExistsInDB(drive)
+def checkDriveExistsInDB(drive):
     # check if drive.name has records > 0 in DB
     # if count is 1 return true
     # else return false
     pass
 
-def checkIfProjectExistsInDB(project, drive)
+def checkIfProjectExistsInDB(project, drive):
     # check if project.projectID has record > 0 in DB
     # if count is not 0 return true
     # else return false
@@ -202,8 +210,8 @@ def checkIfProjectExistsInDB(project, drive)
 
 drives = listAllDrives()
 
-print(Fore.YELLOW + drives)
-
+print(Fore.YELLOW + ', '.join(drives))
+print(Fore.WHITE)
             
 while True:
     db = DB()
@@ -213,9 +221,11 @@ while True:
         break
     if doesDriveExist(letter+':'):  
         thisDrive = selectDrive(letter+':\\', db)
+        print(Fore.LIGHTBLUE_EX)
         if thisDrive.driveTypeID != 0 and 'Y' == str(input(f'Do you want to add {thisDrive.driveID} to the DataBase?(Y/N): ')).upper():
             thisDrive.addToDB(db)
         if 'Y' == str(input('Do you want to view/add all valid projects to DB?(Y/N): ')).upper():  
+            print(Fore.LIGHTGREEN_EX)
             db.execute('SELECT * FROM `project priority`')
             for type in db.cursor:
                 print(type[0], " => ", type[1]) 
@@ -230,8 +240,9 @@ while True:
             for type in db.cursor:
                 print(type[0], " => ", type[1]) 
             typeID = int(input('Default type ID: '))   
-
+            print(Fore.RESET)
             projects = getProjects(letter+':\\', thisDrive, priorityID, statusID, typeID)     
     else:
         print(Back.LIGHTBLACK_EX + letter + " => is not mounted")
     print("=======================================================\n")    
+    print(Back.RESET)
