@@ -25,7 +25,9 @@ class DeviceMonitor(win32serviceutil.ServiceFramework):
     _svc_description_ = "Near storage, cold storage, and archive tracker and updater for MNSU"
 
     watchingDrives = []
+    threads = []
     isRunning = True
+    
     @classmethod
     def parse_command_line(cls):
         win32serviceutil.HandleCommandLine(cls)
@@ -82,6 +84,11 @@ class DeviceMonitor(win32serviceutil.ServiceFramework):
         - size changes to drive - update drives table
     '''
     def monitorNearStorage():
+        # assign one thread for each identified networked drive
+        
+        # 1. get network drives
+        # 2. create a monitoring thread for each drive
+        # 3. whenever change is observed, add modifcation/log to the DB
         pass
 
     # monitor given cold storage or archive drives for changes and log accordingly

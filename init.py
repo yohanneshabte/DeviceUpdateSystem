@@ -19,6 +19,7 @@ from os import scandir, walk
 import win32com.client as com
 from db import DB
 import util
+from colorama import Fore, Back, Style
 
 class Project:
     def __init__(self, id, name, projectLocation, date):
@@ -45,11 +46,11 @@ class Project:
         # 2. add to DB if it doesn't 
         sql = f"INSERT INTO project VALUES ('{self.projectLocation}_{self.projectID}', '{self.date}', '{self.size}', '{self.name}', {self.priorityID}, {self.statusID}, {self.typeID}, '{self.projectLocation}')"
         try:
-            print('Adding to DB: ', sql)
+            print(Fore.CYAN + 'Adding to DB: ' + sql)
             db.execute(sql)
             db.commit()
         except:
-            print(self.projectID,': failed to be added to DB')  
+            print(Fore.RED + self.projectID + ': failed to be added to DB')  
 
     #if folder(directory) satisfies project spec check continue to access dir
     #check file name/ match against rules
@@ -97,11 +98,11 @@ class Drive:
         # 2. check if drive already exists (Not implemented)
         # 3. add to DB if it doesn't 
         sql = f"INSERT INTO drive VALUES ('{self.driveID}', '{self.totalSize}', '{self.driveSpinDate}', '{self.driveLocation}', '{self.driveMake}', {self.driveAge}, {self.driveTypeID})"
-        print('committing: ', sql)
+        print(Fore.CYAN + 'Committing: ' + sql)
         db.execute(sql)
         if 'Y' == str(input('Are you sure you want to add the drive to the DB?(Y/N): ')):
             db.commit()
-            print('Drive successfully added to DB')  
+            print(Fore.GREEN + 'Drive successfully added to DB')  
 
 def getNetworkDrives():
     #get network drives that may not be mapped
@@ -132,8 +133,6 @@ def listAllDrives():
         drives.remove('')
     return drives
 
-
-
 def selectDrive(letter, db):
     name = win32api.GetVolumeInformation(letter)
     totalSize, used, free = shutil.disk_usage(letter) 
@@ -145,7 +144,7 @@ def selectDrive(letter, db):
         deviceID = name[0] 
     deviceID = str(input("What is Device Name: "))
     drive = Drive(deviceID, letter, util.convertSize(totalSize), util.convertSize(free), driveMake)
-    print('This is your drive: ', drive) 
+    print(Back.LIGHTMAGENTA_EX + 'This is your drive: ' + drive) 
     print('------------------------')
     if 'N' == str(input('Do you want to continue adding to the DataBase?(Y/N): ')):
         return drive
@@ -183,14 +182,27 @@ def getProjects(letter, drive, priorityID, statusID, typeID):
                 folders.append([folder.name, mTime, size])
             else:
                 folders.append([folder.name, mTime])   
-                print("Not Valid to Add: ",project)
+                print(Fore.RED + "Not Valid to Add: " + project)
             projects.append(project)
     end = time.time()
-    print("Execution time: ", end - start, " secs")
+    print(Back.YELLOW + "Execution time: " + (end - start) + " secs")
     return folders
+
+def checkDriveExistsInDB(drive)
+    # check if drive.name has records > 0 in DB
+    # if count is 1 return true
+    # else return false
+    pass
+
+def checkIfProjectExistsInDB(project, drive)
+    # check if project.projectID has record > 0 in DB
+    # if count is not 0 return true
+    # else return false
+    pass
+
 drives = listAllDrives()
 
-print(drives)
+print(Fore.YELLOW + drives)
 
             
 while True:
@@ -221,5 +233,5 @@ while True:
 
             projects = getProjects(letter+':\\', thisDrive, priorityID, statusID, typeID)     
     else:
-        print(letter, " => is not mounted")
+        print(Back.LIGHTBLACK_EX + letter + " => is not mounted")
     print("=======================================================\n")    
