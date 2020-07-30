@@ -84,3 +84,12 @@ print("%.2f MB" % (folder.Size / MB))
 - https://medium.com/swlh/automate-python-testing-with-github-actions-7926b5d8a865
 - https://flake8.pycqa.org/en/latest/
 - https://www.lambdatest.com/blog/top-5-python-frameworks-for-test-automation-in-2019/
+
+### Electron 
+#### Electron 
+- https://www.electronjs.org/docs
+- https://gist.github.com/timpulver/452670e4a0ec9619a06347ff61c3f60c
+
+#### Python and Electron
+- https://www.techiediaries.com/python-electron-tutorial/
+- https://stackoverflow.com/questions/57419669/communicating-between-a-python-and-electron-app
